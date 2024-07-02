@@ -1,5 +1,6 @@
 /* joins: select all the computers from the products table:
 using the products table and the categories table, return the product name and the category name */
+use bestbuy;
 select P.Name AS ProductName, C.Name AS CategoryName
 FROM products AS P
 INNER JOIN categories AS C
@@ -18,7 +19,7 @@ INNER JOIN reviews ON reviews.ProductID = products.ProductID
 WHERE reviews.Rating = 5;
  
 /* joins: find the employee with the most total quantity sold.  use the sum() function and group by */
-SELECT e.FirstName, e.LastName, Sum(s.Quanity) AS Total
+SELECT e.FirstName, e.LastName, Sum(s.Quantity) AS Total
 FROM sales AS s
 INNER JOIN employees AS e ON e.EmployeeID = s.EmployeeID
 GROUP BY e.EmployeeID
@@ -36,7 +37,7 @@ WHERE c.Name = 'Appliances' OR c.Name = 'Games';
 
 /* joins: find the product name, total # sold, and total price sold,
  for Eagles: Hotel California --You may need to use SUM() */
- SELECT p.Name, Sum(s.Quantity) as 'Total Sold', Sum(s.Quality * s.PricePerUnit) as 'Total Price'
+ SELECT p.Name, Sum(s.Quantity) as 'Total Sold', Sum(s.Quantity * s.PricePerUnit) as 'Total Price'
  FROM products as p
  INNER JOIN sales as s on s.ProductID = p.ProductID
  WHERE p.ProductID = 97;
